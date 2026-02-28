@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roma for Democracy Foundation — Building Democratic Power</title>
+<meta name="description" content="The first institution in Europe dedicated to strengthening democratic conditions for Roma. Advancing political voice, institutional reform, and democratic participation across Europe.">
+<meta property="og:title" content="Roma for Democracy Foundation">
+<meta property="og:description" content="Building the political voice and power of Europe's Roma — and through it, a more democratic Europe for all.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#00022E">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23e8154d'/><text x='50' y='65' font-size='60' text-anchor='middle' fill='white'>🏛️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-pure:#FDFCFD; --bg-warm:#F8F3EA; --bg-surface:#E6D8C7;
+  --bg-div:#D6C7B5; --bg-cool:#F2F4F8; --bg-dark:#00022E;
+  --red:#e8154d; --red2:#c8123f; --blue:#2563EB; --blue2:#1A45BE; --blue-lt:#EAF2FF;
+  --tx:#00022E; --tb:#374151; --tm:#6B7280; --r:10px; --r2:6px; --r3:16px;
+  --f:'Figtree','Segoe UI',sans-serif; --transition:all 0.3s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#05071c;font-family:var(--f);min-height:100vh;overflow-x:hidden}
+
+/* PAGE SWITCHING */
+.page{display:none;animation:fadeIn 0.25s ease-out}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* NAV */
+.nav{background:var(--bg-dark);display:flex;align-items:center;padding:0 48px;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.nav-logo{display:block;width:auto;height:34px;margin-right:24px}
+.nsp{flex:1}
+.nls{display:flex;list-style:none;gap:0}
+.nls li a{font-family:var(--f);font-size:12px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;padding:0 14px;height:64px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:var(--transition)}
+.nls li a:hover{color:#fff}
+.nls li a.on{color:#fff;border-bottom-color:var(--red)}
+.ncta{font-family:var(--f);font-size:12px;font-weight:700;background:var(--red);color:#fff;padding:10px 20px;border-radius:var(--r);border:none;cursor:pointer;transition:var(--transition);margin-left:8px}
+.ncta:hover{background:var(--red2);transform:translateY(-2px)}
+
+/* MOBILE NAV */
+.mob-menu-btn{display:none;align-items:center;justify-content:center;width:36px;height:36px;border:none;background:none;cursor:pointer;font-size:24px;color:#fff;padding:0;margin-left:auto;transition:var(--transition)}
+.mob-menu-btn:hover{opacity:0.8}
+.mob-nav{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg-pure);z-index:999;padding:24px;flex-direction:column;gap:8px;overflow-y:auto;animation:slideDown 0.25s ease}
+.mob-nav.open{display:flex}
+.mob-nav a{display:block;padding:14px 16px;font-size:15px;font-weight:600;color:var(--tx);text-decoration:none;border-radius:8px;transition:var(--transition)}
+.mob-nav a:hover,.mob-nav a.on{background:var(--bg-warm);color:var(--red)}
+.mob-nav a:last-child{background:var(--red);color:#fff;margin-top:8px}
+.mob-nav a:last-child:hover{background:var(--red2)}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+
+/* SKIP LINK */
+.skip-link{position:absolute;top:-40px;left:0;background:var(--red);color:#fff;padding:8px 16px;z-index:1001;border-radius:0 0 4px 0;font-weight:600}
+.skip-link:focus{top:0}
+
+/* LAYOUT */
+.w{max-width:1100px;margin:0 auto;padding:0 48px}
+.sr{font-family:var(--f);color:var(--tb);background:var(--bg-pure);line-height:1.6}
+
+/* HERO */
+.hero{background:linear-gradient(135deg, var(--bg-dark) 0%, #1a1a3f 50%, var(--red) 100%);position:relative;overflow:hidden;min-height:560px;padding:100px 48px 80px;display:flex;align-items:center}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%, rgba(232,21,77,0.15) 0%, transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;top:0;right:0;width:600px;height:600px;background:radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);pointer-events:none;border-radius:50%}
+.hero-content{max-width:1100px;margin:0 auto;position:relative;z-index:1;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.hero-text h1{color:#fff;font-size:56px;font-weight:900;line-height:1.15;margin-bottom:20px;letter-spacing:-0.02em}
+.hero-text p{color:rgba(255,255,255,0.85);font-size:18px;line-height:1.7;margin-bottom:32px;max-width:550px}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.stat{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);padding:24px;border-radius:12px;color:#fff;transition:var(--transition)}
+.stat:hover{background:rgba(255,255,255,0.15);transform:translateY(-4px)}
+.stat-number{font-size:36px;font-weight:800;color:var(--red);display:block;margin-bottom:4px}
+.stat-label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;opacity:0.9}
+
+/* SECTIONS */
+.section-light{background:var(--bg-pure);padding:80px 48px}
+.section-dark{background:linear-gradient(180deg, var(--bg-dark) 0%, #0d0820 100%);color:#fff;padding:80px 48px;position:relative;overflow:hidden}
+.section-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%, rgba(232,21,77,0.08) 0%, transparent 50%);pointer-events:none}
+.section-dark .w{position:relative;z-index:1}
+.section-dark h1,.section-dark h2{color:#fff}
+.section-dark p{color:rgba(255,255,255,0.8)}
+
+/* TYPE */
+.h1{font-size:40px;font-weight:800;color:var(--tx);margin:48px 0 18px;line-height:1.12;letter-spacing:-0.02em}
+.h2{font-size:28px;font-weight:700;color:var(--tx);margin:40px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--bg-div)}
+.h3{font-size:20px;font-weight:600;color:var(--tx);margin:28px 0 10px}
+.h4{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin:24px 0 8px}
+.bl{font-size:18px;font-weight:400;color:var(--tb);line-height:1.7;margin-bottom:16px}
+.bp{font-size:16px;font-weight:400;color:var(--tb);line-height:1.75;margin-bottom:14px}
+
+/* BUTTONS */
+.btn-p{font-family:var(--f);font-size:13px;font-weight:700;text-decoration:none;background:var(--red);color:#fff;padding:12px 24px;border-radius:var(--r);border:none;cursor:pointer;transition:var(--transition);display:inline-block}
+.btn-p:hover{background:var(--red2);transform:translateY(-2px)}
+.btn-s{font-family:var(--f);font-size:13px;font-weight:700;text-decoration:none;background:transparent;color:var(--blue);padding:11px 24px;border-radius:var(--r);border:2px solid var(--blue);cursor:pointer;transition:var(--transition);display:inline-block}
+.btn-s:hover{background:var(--blue-lt)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+/* CARDS */
+.card{border:1px solid var(--bg-div);border-radius:var(--r);overflow:hidden;transition:var(--transition);background:var(--bg-pure);position:relative}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, var(--red), var(--blue));opacity:0;transition:opacity 0.3s}
+.card:hover{transform:translateY(-8px);box-shadow:0 16px 48px rgba(0,2,46,0.15);border-color:var(--red)}
+.card:hover::before{opacity:1}
+.card-content{padding:32px}
+.card h3{font-size:20px;font-weight:700;color:var(--tx);margin-bottom:12px}
+.card p{color:var(--tb);line-height:1.7;margin-bottom:16px}
+.card-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:48px 0;background:linear-gradient(135deg, var(--bg-cool) 0%, var(--bg-warm) 100%);padding:48px;border-radius:16px}
+.stat-card{text-align:center;padding:24px}
+.stat-card-number{font-size:48px;font-weight:900;color:var(--red);display:block;margin-bottom:8px;letter-spacing:-0.02em}
+.stat-card-label{font-size:13px;font-weight:600;color:var(--tm);text-transform:uppercase;letter-spacing:0.1em}
+.stat-card-desc{font-size:13px;color:var(--tb);margin-top:6px;line-height:1.5}
+
+/* CTA SECTION */
+.cta-section{background:linear-gradient(135deg, var(--red) 0%, var(--blue) 100%);color:#fff;padding:60px 48px;border-radius:16px;margin:48px 0;text-align:center;max-width:1100px;margin-left:auto;margin-right:auto}
+.cta-section h2{color:#fff;border:none;padding-bottom:0;margin-top:0}
+.cta-section p{color:rgba(255,255,255,0.9);max-width:600px;margin:0 auto 32px}
+.cta-btn{background:#fff;color:var(--red);border:none;padding:14px 32px;font-weight:700}
+.cta-btn:hover{background:var(--bg-pure);color:var(--blue)}
+
+/* FORM */
+.form-field{margin:16px 0}
+.form-field label{display:block;font-size:12px;font-weight:600;color:var(--tx);margin-bottom:6px}
+.form-field input,.form-field textarea,.form-field select{width:100%;font-family:var(--f);font-size:14px;padding:11px 14px;border:1.5px solid var(--bg-div);border-radius:var(--r2);background:var(--bg-pure);color:var(--tx);transition:var(--transition);outline:none}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(232,21,77,0.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* FOOTER */
+.footer{background:var(--bg-dark);padding:52px 48px;margin-top:72px}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr;gap:52px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.footer-title{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.footer-text{font-size:15px;font-style:italic;font-weight:400;color:rgba(255,255,255,0.52);margin-bottom:16px;line-height:1.65}
+.footer-list{font-size:13px;font-weight:400;color:rgba(255,255,255,0.35);line-height:1.9}
+.footer-list a{color:inherit;text-decoration:none;transition:var(--transition)}
+.footer-list a:hover{color:#fff}
+.footer-bottom{max-width:1100px;margin:24px auto 0;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.2)}
+.footer-bottom a{color:inherit;text-decoration:none;transition:var(--transition)}
+.footer-bottom a:hover{color:rgba(255,255,255,0.5)}
+
+/* BACK TO TOP */
+.back-to-top{position:fixed;bottom:60px;right:20px;width:40px;height:40px;border-radius:50%;background:var(--bg-dark);color:#fff;border:none;cursor:pointer;z-index:9998;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 16px rgba(0,0,0,0.2);opacity:0;transform:translateY(10px);transition:var(--transition);pointer-events:none}
+.back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-to-top:hover{background:var(--red)}
+
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg, var(--red), var(--blue));z-index:10001;width:0%;transition:width 0.1s linear}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .hero-content{grid-template-columns:1fr;gap:32px}
+  .hero-text h1{font-size:42px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:768px){
+  .nav{padding:0 16px;height:54px}
+  .nav-logo{height:28px}
+  .nls{display:none}
+  .ncta{font-size:11px;padding:8px 14px}
+  .mob-menu-btn{display:flex}
+  
+  .w{padding:0 16px}
+  .section-dark,.section-light{padding:48px 16px}
+  
+  .h1{font-size:28px}
+  .h2{font-size:22px}
+  .h3{font-size:18px}
+  
+  .hero{min-height:auto;padding:48px 16px}
+  .hero-content{grid-template-columns:1fr}
+  .hero-text h1{font-size:32px}
+  .hero-text p{font-size:16px}
+  .hero-stats{grid-template-columns:1fr}
+  
+  .grid-2,.grid-3,.stats-grid{grid-template-columns:1fr;gap:16px}
+  .stats-grid{padding:24px 16px}
+  
+  .cta-section{padding:40px 16px;margin:32px 16px}
+  
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:20px}
+  .footer-bottom{flex-direction:column;gap:4px}
+  .back-to-top{bottom:70px;right:14px}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" role="navigation" aria-label="Primary">
+  <a href="#" class="nav-logo" aria-label="Roma for Democracy Foundation Home">
+    <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" fill="white" opacity="0.1"/>
+      <text x="50" y="65" font-size="50" text-anchor="middle" fill="white">🏛️</text>
+    </svg>
+  </a>
+  <span class="nsp"></span>
+  <button class="mob-menu-btn" id="mobMenuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mob-nav">☰</button>
+  <ul class="nls" role="menubar">
+    <li role="none"><a href="#" onclick="changePage('about'); return false" role="menuitem">About</a></li>
+    <li role="none"><a href="#" onclick="changePage('work'); return false" role="menuitem">Our Work</a></li>
+    <li role="none"><a href="#" onclick="changePage('impact'); return false" role="menuitem">Impact</a></li>
+    <li role="none"><a href="#" onclick="changePage('index'); return false" role="menuitem">Index</a></li>
+    <li role="none"><a href="#" onclick="changePage('news'); return false" role="menuitem">News</a></li>
+  </ul>
+  <button class="ncta" onclick="changePage('involved')">Get Involved</button>
+</nav>
+
+<nav class="mob-nav" id="mob-nav" role="navigation" aria-label="Mobile navigation">
+  <a href="#" onclick="changePage('home'); closeMobileNav(); return false">Home</a>
+  <a href="#" onclick="changePage('about'); closeMobileNav(); return false">About</a>
+  <a href="#" onclick="changePage('work'); closeMobileNav(); return false">Our Work</a>
+  <a href="#" onclick="changePage('impact'); closeMobileNav(); return false">Impact</a>
+  <a href="#" onclick="changePage('index'); closeMobileNav(); return false">Index</a>
+  <a href="#" onclick="changePage('news'); closeMobileNav(); return false">News</a>
+  <a href="#" onclick="changePage('involved'); closeMobileNav(); return false">Get Involved</a>
+</nav>
+
+<main id="main-content">
+
+<!-- HOME -->
+<div id="page-home" class="page active sr">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Building Democratic Power for Roma Across Europe</h1>
+        <p>The first institution in Europe dedicated solely to strengthening democratic conditions for Roma. We advance political voice, institutional reform, and meaningful democratic participation.</p>
+        <div class="ctas">
+          <a href="#" class="btn-p" onclick="changePage('involved'); return false">Get Involved</a>
+          <a href="#" class="btn-s" onclick="changePage('about'); return false">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">25+</span>
+          <span class="stat-label">Countries</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Leaders Trained</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">12</span>
+          <span class="stat-label">Reforms Influenced</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Committed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="section-light">
+    <div class="w">
+      <h2>Our Mission & Values</h2>
+      <p class="bl">We build the political voice and power of Europe's Roma communities, creating conditions for meaningful democratic participation and institutional reform. Our work spans advocacy, research, and community organizing across 25+ countries.</p>
+      <div class="grid-3" style="margin-top:48px">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Strategy</span>
+            <h3>Advocacy & Policy</h3>
+            <p>Advancing Roma rights through strategic policy interventions and partnerships with governments and EU institutions.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Knowledge</span>
+            <h3>Research & Evidence</h3>
+            <p>Evidence-based research informing democratic reform, policy development, and institutional accountability.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Movement</span>
+            <h3>Community Leadership</h3>
+            <p>Building networks and strengthening Roma leadership and civil society capacity across Europe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section-dark">
+    <div class="w">
+      <h2 style="color:#fff;border-color:rgba(255,255,255,0.2)">Impact & Progress</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-card-number">25+</span>
+          <span class="stat-card-label">Countries</span>
+          <span class="stat-card-desc">Active network presence</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-number">500+</span>
+          <span class="stat-card-label">Leaders</span>
+          <span class="stat-card-desc">Trained & empowered</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-number">12</span>
+          <span class="stat-card-label">Reforms</span>
+          <span class="stat-card-desc">Policy changes influenced</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-number">100%</span>
+          <span class="stat-card-label">Commitment</span>
+          <span class="stat-card-desc">To Roma democracy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section-light">
+    <div class="w">
+      <h2>Latest Updates</h2>
+      <div class="grid-2" style="margin-top:32px">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">News - Feb 2026</span>
+            <h3>EU Commission Consultation</h3>
+            <p>RFD submits comprehensive policy recommendations on Roma democratic participation to the European Commission.</p>
+            <a href="#" class="btn-s" onclick="changePage('news'); return false">Read More →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Research - Jan 2026</span>
+            <h3>Democratic Audit Released</h3>
+            <p>New research on Roma political participation across 25 countries provides comprehensive baseline data.</p>
+            <a href="#" class="btn-s" onclick="changePage('news'); return false">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="cta-section">
+    <h2>Join the Movement</h2>
+    <p>Help us strengthen Roma political voice and democratic participation across Europe. Whether through partnerships, donations, or advocacy, every contribution matters.</p>
+    <button class="btn-p cta-btn" onclick="changePage('involved'); return false">Get Involved Today</button>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page sr">
+  <section class="section-dark">
+    <div class="w">
+      <h1 style="color:#fff">About RFD</h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:600px;line-height:1.7;margin-bottom:0">
+        Founded as the first institution in Europe dedicated solely to Roma democratic participation, we represent a breakthrough commitment to political empowerment and institutional reform.
+      </p>
+    </div>
+  </section>
+  
+  <section class="section-light">
+    <div class="w">
+      <h2>Our Approach</h2>
+      <p class="bl">We work at the intersection of institutional change and community leadership, creating systemic conditions for Roma political voice while building sustainable community movements.</p>
+      <div class="grid-2" style="margin-top:40px">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Institutional</span>
+            <h3>Systemic Change</h3>
+            <p>We partner with governments, EU institutions, and international organizations to embed Roma democratic participation into permanent policy frameworks and institutional structures.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Community</span>
+            <h3>Leadership Building</h3>
+            <p>We support Roma leaders, activists, and civil society organizations to build sustainable, accountable political movements rooted in community priorities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WORK -->
+<div id="page-work" class="page sr">
+  <section class="section-dark">
+    <div class="w">
+      <h1 style="color:#fff">Our Work</h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:600px;line-height:1.7;margin-bottom:0">
+        We implement strategic initiatives across policy advocacy, research, and community engagement to advance Roma democratic participation and institutional accountability.
+      </p>
+    </div>
+  </section>
+  
+  <section class="section-light">
+    <div class="w">
+      <div class="grid-3" style="margin-top:32px">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Strategy</span>
+            <h3>Policy Advocacy</h3>
+            <p>Working directly with EU institutions and national governments to strengthen Roma representation and embed democratic participation into institutional frameworks.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Evidence</span>
+            <h3>Research Initiative</h3>
+            <p>Conducting independent, high-quality research on Roma political participation, institutional barriers, and reform pathways across Europe.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Network</span>
+            <h3>Community Network</h3>
+            <p>Connecting and supporting Roma leaders across Europe through knowledge exchange, capacity building, and strategic coordination on shared priorities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- IMPACT -->
+<div id="page-impact" class="page sr">
+  <section class="section-dark">
+    <div class="w">
+      <h1 style="color:#fff">Our Impact</h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:600px;line-height:1.7;margin-bottom:0">
+        Measuring progress toward enhanced Roma political voice and meaningful institutional reform across Europe.
+      </p>
+    </div>
+  </section>
+  
+  <section class="section-light">
+    <div class="w">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-card-number">25+</span>
+          <span class="stat-card-label">Countries</span>
+          <span class="stat-card-desc">Network presence & partnerships</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-number">500+</span>
+          <span class="stat-card-label">Roma Leaders</span>
+          <span class="stat-card-desc">Trained in advocacy & policy</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-number">12</span>
+          <span class="stat-card-label">Policy Reforms</span>
+          <span class="stat-card-desc">Influenced by our work</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-number">3</span>
+          <span class="stat-card-label">Major Studies</span>
+          <span class="stat-card-desc">Published & referenced</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- INDEX -->
+<div id="page-index" class="page sr">
+  <section class="section-dark">
+    <div class="w">
+      <h1 style="color:#fff">Roma Democratic Index</h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:600px;line-height:1.7;margin-bottom:0">
+        Comprehensive tracking of democratic conditions, institutional commitment, and political participation progress across Europe.
+      </p>
+    </div>
+  </section>
+  
+  <section class="section-light">
+    <div class="w">
+      <h2>Key Indicators</h2>
+      <p class="bl">Our research monitors three core dimensions of Roma democratic participation across Europe.</p>
+      <div class="grid-3" style="margin-top:40px">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Participation</span>
+            <h3>Political Voice</h3>
+            <p>Tracking Roma representation in national parliaments, local governments, and European institutions.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Institution</span>
+            <h3>Policy Framework</h3>
+            <p>Assessing institutional commitment to Roma democratic inclusion and institutional accountability measures.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-tag">Movement</span>
+            <h3>Civil Society</h3>
+            <p>Measuring Roma civil society capacity, organizational strength, and independent advocacy infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- NEWS -->
+<div id="page-news" class="page sr">
+  <section class="section-dark">
+    <div class="w">
+      <h1 style="color:#fff">News & Resources</h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:600px;line-height:1.7;margin-bottom:0">
+        Latest updates, research publications, and resources from the Roma for Democracy Foundation.
+      </p>
+    </div>
+  </section>
+  
+  <section class="section-light">
+    <div class="w">
+      <div class="grid-2" style="margin-top:32px">
+        <article class="card">
+          <div class="card-content">
+            <span class="card-tag">News</span>
+            <h3>EU Commission Consultation</h3>
+            <p>RFD submits policy recommendations to European Commission on strengthening Roma democratic participation frameworks. Our evidence-based proposals build on research across 25 countries.</p>
+            <p style="font-size:12px;color:var(--tm);margin-top:16px;margin-bottom:0">📅 Published Feb 15, 2026</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <span class="card-tag">Research</span>
+            <h3>Democratic Audit Released</h3>
+            <p>New comprehensive research on Roma political participation across 25 European countries. First independent assessment of institutional barriers and reform opportunities.</p>
+            <p style="font-size:12px;color:var(--tm);margin-top:16px;margin-bottom:0">📅 Published Jan 20, 2026</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <span class="card-tag">Event</span>
+            <h3>Roma Leaders Summit</h3>
+            <p>Annual gathering of Roma leaders, activists, and advocates from across Europe. Strategic coordination on shared priorities and institutional reform advocacy.</p>
+            <p style="font-size:12px;color:var(--tm);margin-top:16px;margin-bottom:0">📅 April 15-17, 2026</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <span class="card-tag">Resource</span>
+            <h3>Policy Toolkit</h3>
+            <p>Comprehensive resource guide for Roma civil society and leaders on advocacy strategies, policy development, and institutional engagement approaches.</p>
+            <p style="font-size:12px;color:var(--tm);margin-top:16px;margin-bottom:0">📅 Available now</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- GET INVOLVED -->
+<div id="page-involved" class="page sr">
+  <section class="section-dark">
+    <div class="w">
+      <h1 style="color:#fff">Get Involved</h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:600px;line-height:1.7;margin-bottom:0">
+        Join us in building democratic power for Roma communities across Europe. Multiple ways to support our mission.
+      </p>
+    </div>
+  </section>
+  
+  <section class="section-light">
+    <div class="w">
+      <div class="grid-2" style="margin-top:32px">
+        <div>
+          <h2>Ways to Contribute</h2>
+          <div class="card" style="margin-top:24px">
+            <div class="card-content">
+              <h3>Support Our Work</h3>
+              <p>Help us expand research, advocacy, and community initiatives through financial support or grants.</p>
+              <button class="btn-p" style="margin-top:12px;cursor:pointer;width:100%;border:none">Make a Donation</button>
+            </div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-content">
+              <h3>Join Our Team</h3>
+              <p>We're seeking passionate advocates, researchers, and community organizers to join our growing movement.</p>
+              <a href="mailto:careers@rfd.org" class="btn-s" style="margin-top:12px;display:inline-block">View Opportunities</a>
+            </div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-content">
+              <h3>Partner With Us</h3>
+              <p>Organizations and institutions can partner on research, advocacy, or community initiatives.</p>
+              <a href="mailto:partners@rfd.org" class="btn-s" style="margin-top:12px;display:inline-block">Discuss Partnership</a>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h2>Stay Connected</h2>
+          <form style="margin-top:24px" onsubmit="handleNewsletterSubmit(event)">
+            <div class="form-field">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-field">
+              <label for="interest">Interest Area</label>
+              <select id="interest" name="interest" required>
+                <option value="">Select an area...</option>
+                <option value="advocacy">Advocacy & Policy</option>
+                <option value="research">Research & Data</option>
+                <option value="community">Community Building</option>
+                <option value="general">General Updates</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="region">Region</label>
+              <select id="region" name="region">
+                <option value="">Select your region...</option>
+                <option value="central">Central Europe</option>
+                <option value="eastern">Eastern Europe</option>
+                <option value="southern">Southern Europe</option>
+                <option value="western">Western Europe</option>
+                <option value="global">Global</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-p" style="width:100%;cursor:pointer;border:none;font-family:var(--f)">Subscribe to Updates</button>
+            <p style="font-size:11px;color:var(--tm);margin-top:12px">We respect your privacy. Detailed info in our privacy policy.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-title">Roma for Democracy Foundation</p>
+      <p class="footer-text">Building the political voice and power of Europe's Roma — and through it, a more democratic Europe for all.</p>
+    </div>
+    <div>
+      <p class="footer-title">Connect</p>
+      <div class="footer-list">
+        <div><a href="#" onclick="changePage('about'); return false">About us</a></div>
+        <div><a href="#" onclick="changePage('news'); return false">News & Resources</a></div>
+        <div><a href="#" onclick="changePage('involved'); return false">Get Involved</a></div>
+        <div><a href="mailto:info@rfd.org">Contact: info@rfd.org</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Roma for Democracy Foundation. All rights reserved.</p>
+    <div><a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a></div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
+
+<script>
+function changePage(pageId) {
+  document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+  const page = document.getElementById('page-' + pageId);
+  if (page) {
+    page.classList.add('active');
+    window.scrollTo(0, 0);
+    closeMobileNav();
+  }
+}
+
+const mobMenuBtn = document.getElementById('mobMenuBtn');
+const mobNav = document.getElementById('mob-nav');
+
+function toggleMobileNav() {
+  mobNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+}
+
+function openMobileNav() {
+  mobNav.classList.add('open');
+  mobMenuBtn.setAttribute('aria-expanded', 'true');
+}
+
+function closeMobileNav() {
+  mobNav.classList.remove('open');
+  mobMenuBtn.setAttribute('aria-expanded', 'false');
+}
+
+mobMenuBtn.addEventListener('click', toggleMobileNav);
+
+document.addEventListener('click', (e) => {
+  if (!mobNav.contains(e.target) && !mobMenuBtn.contains(e.target)) {
+    closeMobileNav();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMobileNav();
+});
+
+// Scroll progress
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  scrollProgress.style.width = scrollPercent + '%';
+});
+
+// Back to top
+const backToTopBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  window.scrollY > 300 ? backToTopBtn.classList.add('show') : backToTopBtn.classList.remove('show');
+});
+backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Form handling
+function handleNewsletterSubmit(e) {
+  e.preventDefault();
+  alert('Thank you for subscribing! Check your email for confirmation.');
+  e.target.reset();
+}
+
+console.log('✓ Roma for Democracy Foundation loaded');
+</script>
+</body>
+</html>
